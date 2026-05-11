@@ -1,0 +1,96 @@
+<div class="min-h-screen flex flex-col">
+
+
+
+  <div class="px-4 py-4 flex justify-between items-center bg-white fixed top-0 left-0 right-0 z-10 pt-[env(safe-area-inset-top)]">
+    <h2 class="font-bold tracking-wider text-xl">Cart</h2>
+    <div class="flex justify-between gap-x-2 items-center">
+      <span class="font-light text-gray-700 text-base">Subtotal:</span>
+      <span class="text-green-600 font-extrabold">Rs {{ totalPrice | number:'1.2-2' }}</span>
+    </div>
+  </div>
+
+  @if(cartItems.length === 0) {
+    <div class="flex-1 flex items-center justify-center">
+      <div class="flex flex-col items-center text-center px-6 gap-y-3">
+        <svg class="w-12 h-12 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+          />
+        </svg>
+
+        <h2 class="text-xl font-semibold">Your Cart is Empty</h2>
+
+        <p class="text-gray-500 max-w-xs">
+          Looks like you haven't added anything to your cart yet
+        </p>
+      </div>
+    </div>
+  }
+  @if(cartItems.length > 0) {
+  <div class="p-4 space-y-1 mb-37 mt-[calc(env(safe-area-inset-top)+3.5rem)]">
+
+    <div
+      *ngFor="let item of cartItems"
+      class="rounded-sm border border-gray-200 p-4 flex gap-4 items-center "
+    >
+      <img
+        ngSrc="{{ item.image }}"
+        width="80"
+        height="80"
+        loading="lazy"
+        decoding="async"
+        class="w-20 h-20 object-cover rounded-lg"
+      />
+
+      <div class="flex-1"></div>
+      <div class="flex flex-col items-end gap-y-5">
+        <div class="flex gap-x-5">
+          <h3 class="font-semibold">{{ item.title }}</h3>
+
+          <p class="text-green-600 font-bold">Rs {{ item.price }}</p>
+        </div>
+
+        <div class="flex items-center rounded-full p-1">
+          <div class="w-12 h-12 hover:bg-gray-200 flex justify-center items-center rounded-full">
+            <button
+              (click)="decrease(item.id)"
+              class="w-6 h-6 rounded-full bg-red-700 text-white shadow-sm flex items-center justify-center text-xl cursor-pointer"
+            >
+              -
+            </button>
+          </div>
+
+          <span>{{ item.quantity }}</span>
+
+          <div class="w-12 h-12 hover:bg-gray-200 flex justify-center items-center rounded-full">
+            <button
+              (click)="increase(item.id)"
+              class="w-6 h-6 rounded-full bg-red-700 text-white shadow-sm flex items-center justify-center text-xl cursor-pointer"
+            >
+              +
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+}
+  
+ @if(cartItems.length > 0) {
+<div class="fixed bottom-12 left-0 right-0 flex justify-center px-3 bg-white py-3 pb-3">
+  <button
+  routerLink="/checkout"
+    class="w-full bg-[#00B86B] hover:bg-[#009e5c] text-white py-2 tracking-wider rounded-sm transition-all active:scale-[0.99] mb-[calc(env(safe-area-inset-bottom)+1rem)]"
+  >
+    Checkout
+  </button>
+</div>
+ }
+
+</div>
+<app-bottom-menu/>
+

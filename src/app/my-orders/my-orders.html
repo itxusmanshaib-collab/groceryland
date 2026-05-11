@@ -1,0 +1,95 @@
+<div class="min-h-screen bg-slate-50 font-sans">
+  <nav
+    class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200 px-4 pt-[env(safe-area-inset-top)] min-h-[calc(4rem+env(safe-area-inset-top))] flex items-center justify-between"
+  >
+      <a
+      routerLink="/settings"
+    class="nline-block p-2 ml-2 bg-gray-100 rounded-full hover:bg-gray-200"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="h-5 w-5 text-gray-600"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M10 19l-7-7m0 0l7-7m-7 7h18"
+      />
+    </svg>
+  </a>
+    <h1 class="text-xl font-extrabold text-slate-800 tracking-wide">My Orders</h1>
+    <span class="w-10"></span>
+  </nav>
+
+  <main class="p-4 max-w-2xl mx-auto">
+
+
+
+    <div class="space-y-4">
+      @for (order of orders(); track trackByOrderNo($index, order)) {
+        <div
+          role="button"
+          tabindex="0"
+          (click)="toggleOrderDetails(order.orderNo)"
+          (keyup.enter)="toggleOrderDetails(order.orderNo)"
+          (keyup.space)="toggleOrderDetails(order.orderNo)"
+          class="group bg-white p-5 rounded-2xl shadow-sm border border-slate-200 hover:border-emerald-200 hover:shadow-md transition-all duration-300"
+        >
+          <div class="flex justify-between items-start mb-2">
+            <span class="text-emerald-600 font-bold text-lg">Order #{{ order.orderNo }}</span>
+            <span class="text-slate-900 font-extrabold text-lg"> Rs {{ order.amount | number: '1.2-2' }} </span>
+          </div>
+
+          <div class="flex justify-between items-center text-sm text-slate-500 mb-6">
+            <span class="font-medium">{{ formatDate(order.createdAt) }}</span>
+            <span class="bg-slate-100 px-2 py-0.5 rounded text-xs font-semibold"
+              >{{ order.itemsCount }} Items</span
+            >
+          </div>
+
+          <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+            <span class="text-indigo-900 font-bold text-base tracking-wide">{{ order.status }}</span>
+            <div
+              class="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center group-hover:bg-emerald-50 transition-colors"
+            >
+              <svg
+                class="w-4 h-4 text-slate-400 group-hover:text-emerald-600 transition-transform duration-200"
+                [class.rotate-90]="isOrderExpanded(order.orderNo)"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </div>
+          </div>
+
+          @if (isOrderExpanded(order.orderNo)) {
+            <div class="pt-4 mt-4 border-t border-slate-100 space-y-2">
+              @if (order.items.length > 0) {
+                @for (item of order.items; track $index) {
+                  <div class="flex items-center justify-between text-sm">
+                    <span class="text-slate-700">
+                      {{ item.name }} x{{ item.qty }}
+                    </span>
+                    <span class="font-semibold text-slate-900">
+                      Rs {{ item.price | number: '1.2-2' }}
+                    </span>
+                  </div>
+                }
+              } @else {
+                <p class="text-sm text-slate-500">Items detail available nahi hai.</p>
+              }
+            </div>
+          }
+        </div>
+      
+      } 
+    
+    </div>
+  </main>
+</div>

@@ -1,0 +1,118 @@
+<div class=" bg-white mb-35">
+  <div class="flex items-center p-4 sticky top-0 bg-white z-10 pt-[env(safe-area-inset-top)] shadow-sm">
+    <button routerLink="/cart" class="p-2 -ml-2">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-6 w-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M10 19l-7-7m0 0l7-7m-7 7h18"
+        />
+      </svg>
+    </button>
+    <h1 class="flex-1 text-center text-xl font-bold text-gray-800 pr-8">Confirm Request</h1>
+  </div>
+
+  <div class="p-6 pt-0 max-w-full space-y-2">
+    <div class="space-y-4">
+      <div>
+        <label class="text-gray-500 text-sm">Name</label>
+        <p class="text-lg font-medium text-gray-900">{{ customerName }}</p>
+      </div>
+
+      <div>
+        <label class="text-gray-500 text-sm">Phone</label>
+        <p class="text-lg font-medium text-gray-900">{{ customerPhone }}</p>
+      </div>
+
+      <div>
+        <label class="text-gray-500 text-sm">Shop</label>
+        <p class="text-lg font-medium text-gray-900">home</p>
+      </div>
+
+      <div>
+        <label class="text-gray-500 text-sm">Delivery Address</label>
+        <p class="text-lg font-medium text-gray-900 leading-relaxed">
+          {{ customerAddress }}
+        </p>
+      </div>
+
+      <div>
+        <label class="text-gray-500 text-sm">Payment Method</label>
+        <p class="text-lg font-medium text-gray-900">Cash on delivery</p>
+      </div>
+    </div>
+
+    <div class="pt-4">
+      <label class="text-gray-500 text-sm block mb-1">Your Order</label>
+      <div class="flex justify-between items-center border-b border-gray-200 pb-2">
+        <span class="text-lg font-medium text-gray-800">Total amount</span>
+        <span class="text-xl font-bold text-gray-900">Rs {{ totalPrice }}</span>
+      </div>
+    </div>
+
+    <div>
+      <label class="text-gray-500 text-sm block mb-2">Special Instructions</label>
+      <textarea
+        #orderNote
+        rows="2"
+        class="w-full border-b focus:border-green-500 outline-none transition-colors py-2 resize-none"
+      ></textarea>
+    </div>
+
+    @if (errorMsg()) {
+      <p class="text-red-600 text-sm">{{ errorMsg() }}</p>
+    }
+  </div>
+
+  @if (!showSuccessPopup()) {
+    <div
+      class="fixed bottom-12 left-0 right-0 flex flex-col justify-center px-3 bg-white py-3 pb-[env(safe-area-inset-bottom)] shadow-[0_-2px_10px_rgba(0,0,0,0.05)]"
+    >
+      <button
+        (click)="confirmOrder(orderNote.value)"
+        [disabled]="isPlacingOrder() || showSuccessPopup()"
+        class="w-full bg-[#00B86B] hover:bg-[#009e5c] disabled:opacity-60 text-white py-2 z-40 tracking-wider rounded-sm transition-all active:scale-[0.99]"
+      >
+        {{ isPlacingOrder() ? 'Please wait...' : 'Confirm' }}
+      </button>
+      <button
+        routerLink="/home"
+        class=" mt-2 tracking-wider">
+        Cancel
+      </button>
+
+    </div>
+  }
+</div>
+
+@if(showSuccessPopup()) {
+<div class="fixed inset-0 z-100 flex items-center justify-center p-6" role="dialog" aria-modal="true">
+  <div class="absolute inset-0 bg-black/50" (click)="closePopup()"></div>
+
+  <div class="relative bg-white w-full max-w-sm rounded-xl p-8 shadow-2xl text-center transform transition-all scale-100">
+    
+    <div class="flex justify-center mb-6">
+      <div class="w-20 h-20 bg-white border-4 border-[#00B86B] rounded-full flex items-center justify-center">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-[#00B86B]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+        </svg>
+      </div>
+    </div>
+
+    <h2 class="text-2xl font-black text-gray-900 mb-2 uppercase tracking-tight">SUCCESS!</h2>
+    <p class="text-gray-500 font-medium mb-8">Request placed successfully.</p>
+
+    <button 
+      (click)="closePopup()"
+      class="w-full bg-[#00B86B] hover:bg-[#009e5c] text-white py-4 rounded-md font-bold text-lg shadow-lg shadow-green-100 transition-all active:scale-95">
+      Back to Main
+    </button>
+  </div>
+</div>}

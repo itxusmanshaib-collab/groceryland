@@ -1,0 +1,33 @@
+<div *ngIf="slides.length > 0" class="relative mx-3.75 mt-3.75 mb-1.25 rounded-2xl overflow-hidden shadow-lg">
+
+  <!-- Slider track -->
+  <div
+    class="flex transition-transform duration-500 ease-in-out"
+    [style.transform]="'translateX(-' + currentSlide * 100 + '%)'"
+  >
+    <div
+      class="min-w-full flex items-center justify-center"
+      *ngFor="let slide of slides"
+    >
+      <img
+        [ngSrc]="slide.image"
+        width="225"
+        height="225"
+        [alt]="slide.alt"
+        priority
+        class="w-full h-full object-cover"
+      />
+    </div>
+  </div>
+
+  <!-- Dots -->
+  <div class="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1">
+    <div
+      *ngFor="let slide of slides; let i = index"
+      (click)="goToSlide(i)"
+      class="h-2 rounded-full cursor-pointer transition-all duration-300"
+      [ngClass]="currentSlide === i ? 'w-5 bg-white' : 'w-2 bg-white/50'"
+    ></div>
+  </div>
+
+</div>

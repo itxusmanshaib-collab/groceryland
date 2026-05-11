@@ -1,0 +1,86 @@
+/* .active-link {
+  position: relative;
+  color: #000000;
+}
+.nav-links a {
+  padding: 0.5rem 1rem; 
+  border-radius: 1rem; 
+  transition: background-color 0.2s, color 0.2s; 
+}
+
+.nav-links a:active {
+  background-color: rgba(0,0,0,0.05); 
+  color: #111827; 
+}
+
+.active-link::after {
+  content: '';
+  display: block;
+  height: 2px;     
+  background-color: rgb(24, 196, 24);   
+  width: 100%;                 
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  border-radius: 2px;
+}
+
+
+
+
+ */
+
+ .active-link {
+  position: relative;
+  color: #000000;
+}
+
+/* Mobile active link style */
+.active-link-mobile {
+  position: relative;
+  color: #000000;
+  background-color: #f3f4f6;
+}
+
+.active-link-mobile::after {
+  content: '';
+  display: block;
+  height: 2px;
+  background-color: rgb(24, 196, 24);
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  border-radius: 2px;
+}
+
+.nav-links a {
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.nav-links a:active {
+  background-color: rgba(0, 0, 0, 0.05);
+  color: #111827;
+}
+
+.active-link::after {
+  content: '';
+  display: block;
+  height: 2px;
+  background-color: rgb(24, 196, 24);
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  border-radius: 2px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .nav-links a {
+    padding: 0.75rem 1rem;
+    border-radius: 0;
+  }
+}

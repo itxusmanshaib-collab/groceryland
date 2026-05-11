@@ -1,0 +1,11 @@
+:host a {
+  -webkit-tap-highlight-color: transparent;
+  transform: translateZ(0);
+}
+
+:host a:active,
+:host a:focus,
+:host a:focus-visible {
+  outline: none;
+  transform: translateZ(0);
+}

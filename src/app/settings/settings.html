@@ -1,0 +1,78 @@
+<div class="min-h-screen bg-[#f8fafc] flex flex-col items-center">
+  <div class="w-full bg-white border-b border-gray-100 sticky top-0 z-50 pt-[env(safe-area-inset-top)] shadow-sm">
+    <div class="px-6 py-4 flex items-center justify-between">
+      <h3 class="text-xl font-extrabold text-gray-900 tracking-tight">Settings</h3>
+      <div class="w-8 h-8 bg-blue-50 rounded-full flex items-center justify-center">
+         <span class="block w-2 h-2 bg-blue-500 rounded-full animate-pulse"></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="w-full max-w-2xl px-4 py-6 flex-1">
+    <div class="bg-white rounded-[2rem] shadow-xl shadow-gray-200/50 border border-gray-50 overflow-hidden">
+      
+      <div class="divide-y divide-gray-50">
+        
+        <div (click)="profile()" 
+             class="group flex items-center justify-between px-5 py-5 cursor-pointer transition-all active:scale-[0.98] active:bg-gray-50">
+          <div class="flex items-center gap-4 flex-1">
+            <div class="w-12 h-12 bg-gradient-to-br from-green-50 to-green-100 rounded-2xl flex items-center justify-center text-green-600 shadow-sm group-hover:rotate-6 transition-transform">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+              </svg>
+            </div>
+            <div class="flex-1">
+              <h4 class="font-bold text-gray-800 text-base leading-tight">Profile</h4>
+              <p class="text-xs text-gray-400 mt-1">Personal information & security</p>
+            </div>
+          </div>
+          <div class="bg-gray-50 p-2 rounded-lg">
+            <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </div>
+        </div>
+
+        <div (click)="OrderHistory()" 
+             class="group flex items-center justify-between px-5 py-5 cursor-pointer transition-all active:scale-[0.98] active:bg-gray-50">
+          <div class="flex items-center gap-4 flex-1">
+            <div class="w-12 h-12 bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl flex items-center justify-center text-blue-600 shadow-sm group-hover:rotate-6 transition-transform">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+              </svg>
+            </div>
+            <div class="flex-1">
+              <h4 class="font-bold text-gray-800 text-base leading-tight">Order History</h4>
+              <p class="text-xs text-gray-400 mt-1">Manage your previous orders</p>
+            </div>
+          </div>
+          <div class="bg-gray-50 p-2 rounded-lg">
+            <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </div>
+        </div>
+
+        <div (click)="logout()" 
+             class="group flex items-center justify-between px-5 py-5 cursor-pointer transition-all active:scale-[0.98] active:bg-red-50/30">
+          <div class="flex items-center gap-4 flex-1">
+            <div class="w-12 h-12 bg-red-50 rounded-2xl flex items-center justify-center text-red-500 shadow-sm group-hover:rotate-6 transition-transform">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+              </svg>
+            </div>
+            <div class="flex-1">
+              <h4 class="font-bold text-red-600 text-base leading-tight">Logout</h4>
+              <p class="text-xs text-gray-400 mt-1">Securely exit your account</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <p class="text-center text-gray-300 text-[10px] mt-8 uppercase tracking-widest font-semibold">Version 1.0.2</p>
+  </div>
+
+    <app-bottom-menu />
+</div>

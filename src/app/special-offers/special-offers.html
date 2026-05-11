@@ -1,0 +1,45 @@
+<div class="flex justify-between items-center">
+  <h2 class="font-bold tracking-wider text-xl pt-2 pl-4 pb-2">Special Offers</h2>
+  <a
+    class="pr-4 text-green-600"
+    routerLink="/all-products"
+    [state]="{ products: categories(), fromSpecialOffers: true }"
+  >
+    View all
+  </a>
+</div>
+
+<div class="flex overflow-x-auto hide-scrollbar space-x-4 px-1 pb-4">
+  @for (category of categories(); track category.id) {
+    <div class="flex flex-col">
+      <div
+        class="shrink-0 w-33 text-center border rounded-t-sm relative p-2 ml-1 border-gray-300 shadow-[0_8px_6px_-6px_rgba(0,0,0,0.3)]"
+        [routerLink]="['/special-offer-detail', category.id]"
+        [state]="{ product: category, fromSpecialOffers: true }"
+      >
+        <img
+          [src]="category.thumbnail"
+          [alt]="category.title"
+          loading="lazy"
+          class="w-28 h-28 mx-auto object-contain mb-2"
+        />
+        <p class="text-sm font-normal mt-2 line-clamp-1 text-center">
+          {{ category.title }}
+        </p>
+        <p class="text-green-600 font-semibold">Rs{{ category.price }}</p>
+        <span class="absolute top-1 right-1 bg-yellow-500 text-white text-xs px-1 py-0.5 rounded-sm"
+          >- {{ category.discountPercentage | number: '1.0-0' }}%</span
+        >
+      </div>
+      <div class="flex items-center justify-evenly bg-red-700 px-3 rounded-b-sm h-8 mt-1.5 ml-1">
+        <button (click)="removeOne(category)" class="text-white text-lg">-</button>
+
+        <span class="text-white"> {{ getQty(category.id) }} </span>
+
+        <button (click)="add(category)" class="text-white text-lg">+</button>
+      </div>
+    </div>
+  } @empty {
+    <p class="pl-4">Loading categories...</p>
+  }
+</div>

@@ -1,0 +1,86 @@
+<div class="sticky top-0 z-20 bg-white px-4 py-3 pt-[env(safe-area-inset-top)]">
+  <div class="flex items-center gap-3">
+    <h2 class="font-bold tracking-wider text-xl pl-2">Search</h2>
+  </div>
+
+  <div class="mt-1 relative mx-2">
+    <input
+      type="text"
+      placeholder="Name or description..."
+      autocomplete="off"
+      [(ngModel)]="searchPhrase"
+      (keyup.enter)="onSearch()"
+      class="w-full rounded-sm py-2 px-4 pl-2 text-md outline-1 outline-gray-300"
+    />
+    <button
+      type="button"
+      (click)="onSearch()"
+      class="bg-green-500 absolute right-0.5 top-0.5 h-9 w-10 flex items-center justify-center rounded-sm"
+    >
+      <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+        />
+      </svg>
+    </button>
+  </div>
+</div>
+
+<div class="px-2 mt-3 mb-16">
+  <!-- @if (loading) {
+    <p class="text-center text-gray-500 mt-10">Searching...</p>
+  } -->
+
+  <!-- @if (!loading && searchPhrase.trim() && searchResults.length === 0) {
+    <p class="text-center text-gray-500 mt-10">No products found.</p>
+  } -->
+
+  @if (!loading && searchResults.length > 0) {
+    @for (product of searchResults; track product.id) {
+      <div class="flex items-center justify-between border border-gray-300 rounded p-3 mb-2">
+        <img
+          [src]="product.image"
+          (error)="onProductImageError($event)"
+          class="w-20 h-20 object-contain"
+          alt="{{ product.title }}"
+        />
+
+        <div class="flex-1 px-4">
+          <p class="font-semibold line-clamp-2">
+            {{ product.title }}
+          </p>
+
+          <p class="text-green-600 font-bold">Rs {{ product.price }}</p>
+        </div>
+
+        <div class="flex items-center rounded-full p-1">
+          <div class="w-12 h-12 active:bg-gray-200 flex justify-center items-center rounded-full">
+            <button
+              (click)="removeOne(product)"
+              class="w-6 h-6 rounded-full bg-red-700 text-white shadow-sm flex items-center justify-center text-xl cursor-pointer"
+            >
+              -
+            </button>
+          </div>
+
+          <span class="w-8 text-center text-gray-700">
+            {{ getQty(product.id) }}
+          </span>
+
+          <div class="w-12 h-12 active:bg-gray-200 flex justify-center items-center rounded-full">
+            <button
+              (click)="add(product)"
+              class="w-6 h-6 rounded-full bg-red-700 text-white shadow-sm flex items-center justify-center text-xl cursor-pointer"
+            >
+              +
+            </button>
+          </div>
+        </div>
+      </div>
+    }
+  }
+</div>
+<app-bottom-menu />

@@ -1,0 +1,113 @@
+<!-- <header class="bg-white shadow fixed top-0 left-0 right-0 z-50 pt-[env(safe-area-inset-top)]">
+  <nav>
+    <ul class="flex justify-between nav-links">
+      <li class="relative w-32">
+        <a class="px-4 py-2 block text-center text-gray-600 tracking-wide" routerLink="/home" routerLinkActive="active-link"
+          [routerLinkActiveOptions]="{ exact: true }"
+          (click)="setHeaderRoute('/home')">Home</a>
+      </li>
+      <li class="relative w-32">
+        <a class="px-4 py-2 block text-center text-gray-600 tracking-wide" routerLink="/categories"
+          routerLinkActive="active-link"
+          (click)="setHeaderRoute('/categories')">Categories</a>
+      </li>
+      <li class="relative w-32">
+        <a class="px-4 py-2 block text-center text-gray-600 tracking-wide" routerLink="/brands"
+          routerLinkActive="active-link"
+          (click)="setHeaderRoute('/brands')">Brands</a>
+      </li>
+
+        <li class="relative w-32">
+        <a class="px-4 py-2 block text-center text-gray-600 tracking-wide" routerLink="/contact-us"
+          routerLinkActive="active-link"
+          (click)="setHeaderRoute('/contact-us')">Contact Us</a>
+      </li>
+
+       <li class="relative w-32">
+        <a class="px-4 py-2 block text-center text-gray-600 tracking-wide" routerLink="/privacy-policy"
+          routerLinkActive="active-link"
+          (click)="setHeaderRoute('/privacy-policy')">PrivacyPolicy </a>
+      </li>
+    </ul>
+
+    
+  </nav>
+</header> -->
+
+<header class="bg-white shadow fixed top-0 left-0 right-0 z-50 pt-[env(safe-area-inset-top)]">
+  <nav>
+    <!-- Desktop Navigation -->
+    <ul class="hidden md:flex justify-between nav-links">
+      <li class="relative w-32">
+        <a class="px-4 py-2 block text-center text-gray-600 tracking-wide" routerLink="/home" routerLinkActive="active-link"
+          [routerLinkActiveOptions]="{ exact: true }"
+          (click)="setHeaderRoute('/home')">Home</a>
+      </li>
+      <li class="relative w-32">
+        <a class="px-4 py-2 block text-center text-gray-600 tracking-wide" routerLink="/categories"
+          routerLinkActive="active-link"
+          (click)="setHeaderRoute('/categories')">Categories</a>
+      </li>
+      <li class="relative w-32">
+        <a class="px-4 py-2 block text-center text-gray-600 tracking-wide" routerLink="/brands"
+          routerLinkActive="active-link"
+          (click)="setHeaderRoute('/brands')">Brands</a>
+      </li>
+      <li class="relative w-32">
+        <a class="px-4 py-2 block text-center text-gray-600 tracking-wide" routerLink="/contact-us"
+          routerLinkActive="active-link"
+          (click)="setHeaderRoute('/contact-us')">Contact Us</a>
+      </li>
+      <li class="relative w-32">
+        <a class="px-4 py-2 block text-center text-gray-600 tracking-wide" routerLink="/privacy-policy"
+          routerLinkActive="active-link"
+          (click)="setHeaderRoute('/privacy-policy')">PrivacyPolicy</a>
+      </li>
+    </ul>
+
+    <!-- Mobile Navigation - Hamburger Menu -->
+    <div class="md:hidden flex items-center justify-between px-4 py-2">
+      <div class="flex-1"></div>
+      <button (click)="toggleMobileMenu()" class="text-gray-600 focus:outline-none focus:ring-2 focus:ring-green-500 rounded-lg p-2" aria-label="Toggle menu">
+        <svg *ngIf="!isMobileMenuOpen" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+        <svg *ngIf="isMobileMenuOpen" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Menu Dropdown -->
+    <div *ngIf="isMobileMenuOpen" class="md:hidden bg-white border-t border-gray-200 shadow-lg">
+      <ul class="flex flex-col nav-links">
+        <li class="relative w-full">
+          <a class="px-6 py-3 block text-center text-gray-600 tracking-wide hover:bg-gray-50 transition-colors" 
+             routerLink="/home" routerLinkActive="active-link-mobile"
+             [routerLinkActiveOptions]="{ exact: true }"
+             (click)="closeMobileMenuAndSetRoute('/home')">Home</a>
+        </li>
+        <li class="relative w-full">
+          <a class="px-6 py-3 block text-center text-gray-600 tracking-wide hover:bg-gray-50 transition-colors" 
+             routerLink="/categories" routerLinkActive="active-link-mobile"
+             (click)="closeMobileMenuAndSetRoute('/categories')">Categories</a>
+        </li>
+        <li class="relative w-full">
+          <a class="px-6 py-3 block text-center text-gray-600 tracking-wide hover:bg-gray-50 transition-colors" 
+             routerLink="/brands" routerLinkActive="active-link-mobile"
+             (click)="closeMobileMenuAndSetRoute('/brands')">Brands</a>
+        </li>
+        <li class="relative w-full">
+          <a class="px-6 py-3 block text-center text-gray-600 tracking-wide hover:bg-gray-50 transition-colors" 
+             routerLink="/contact-us" routerLinkActive="active-link-mobile"
+             (click)="closeMobileMenuAndSetRoute('/contact-us')">Contact Us</a>
+        </li>
+        <li class="relative w-full">
+          <a class="px-6 py-3 block text-center text-gray-600 tracking-wide hover:bg-gray-50 transition-colors" 
+             routerLink="/privacy-policy" routerLinkActive="active-link-mobile"
+             (click)="closeMobileMenuAndSetRoute('/privacy-policy')">PrivacyPolicy</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>

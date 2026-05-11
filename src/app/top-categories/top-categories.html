@@ -1,0 +1,29 @@
+<h2 class="font-bold tracking-wide text-xl pt-2 pl-4 pb-2">Top Categories</h2>
+
+
+    <div data-no-tab-swipe class="flex overflow-x-auto hide-scrollbar space-x-1 px-1 pb-4">
+
+  @for (category of categories(); track category.CategoryId) {
+
+    
+
+    <div
+      (click)="selectCategory(category)"
+      class="shrink-0 w-38 text-center rounded-t-sm relative cursor-pointer
+      "
+    >
+    <img 
+      [src]="getCategoryImage(category)" 
+      [alt]="category.CategoryName || 'category'" 
+      loading="lazy" 
+      class="w-25 h-28 mx-auto object-contain">
+      {{ category.CategoryName }}
+    </div>
+
+  }
+
+</div>
+
+
+
+
