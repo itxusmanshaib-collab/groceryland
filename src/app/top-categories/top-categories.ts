@@ -15,7 +15,7 @@ export class TopCategories implements OnInit {
   private backend = inject(BackendService);
   private router = inject(Router);
 
-  readonly imageBaseUrl = 'https://groceryland.pk/content/images/categories/';
+  readonly imageBaseUrl = 'https://sale-point.pk/content/images/categories/';
 
   @Output() loaded = new EventEmitter<void>();
 

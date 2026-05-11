@@ -6,7 +6,9 @@ import { shareReplay } from 'rxjs/operators';
 @Injectable({ providedIn: 'root' })
 export class BackendService {
   private http = inject(HttpClient);
-  baseUrl:string = 'https://groceryland.pk';
+  // baseUrl:string = 'https://groceryland.pk';
+  baseUrl:string = 'https://sale-point.pk';
+
 
   private cache = new Map<string, Observable<any>>();
 

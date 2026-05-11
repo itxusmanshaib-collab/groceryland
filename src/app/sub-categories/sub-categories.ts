@@ -19,7 +19,7 @@ export class SubCategories implements OnInit {
   private router = inject(Router);
   private destroyRef = inject(DestroyRef);
 
-  readonly IMAGE_BASE_PATH = 'https://groceryland.store/content/images/categories/';
+  readonly IMAGE_BASE_PATH = 'https://sale-point.pk/content/images/categories/';
 
   parentId = signal<number>(0);
   parentName = signal<string>('Sub Categories');

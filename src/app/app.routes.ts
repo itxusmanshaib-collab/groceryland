@@ -7,7 +7,7 @@ const protectedRoute = {
 };
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
 
   { path: 'login', loadComponent: () => import('./login/login').then((m) => m.Login) },
   { path: 'otp', loadComponent: () => import('./otp/otp').then((m) => m.Otp) },

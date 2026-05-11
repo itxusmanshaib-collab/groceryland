@@ -26,7 +26,7 @@ export class TopCategoryProducts implements OnInit {
   private backend = inject(BackendService);
   private cartService = inject(CartService);
 
-  readonly imageBaseUrl = 'https://groceryland.pk/Content/ProductImages/';
+  readonly imageBaseUrl = 'https://sale-point.pk/Content/ProductImages/';
 
   categoryName = signal<string>('');
   products = signal<any[]>([]);

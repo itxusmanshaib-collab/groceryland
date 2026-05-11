@@ -24,13 +24,18 @@ export class BrandProducts implements OnInit {
   private backend = inject(BackendService);
   private cartService = inject(CartService);
 
-  readonly imageBaseUrl = 'https://groceryland.pk/Content/ProductImages/';
+  // readonly imageBaseUrl = 'https://sale-point.pk/Content/ProductImages/';
+  readonly imageBaseUrl = 'https://sale-point.pk/Content/ProductImages/';
+
 
   brandName = signal<string>('');
   products = signal<Product[]>([]);
   loading = signal<boolean>(false);
   cartItems: any[] = [];
 
+
+
+  
   // 👇 search signal
   searchText = signal<string>('');
 
