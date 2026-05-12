@@ -9,21 +9,20 @@ import { CommonModule } from '@angular/common';
 })
 export class BannerSlider implements OnInit, OnDestroy {
 
-  slides = [
-    { 
-      image: 'https://kimi-web-img.moonshot.cn/img/t4.ftcdn.net/7cb640427f7d6099824e4ffd070f24626c315cef.jpg', 
-      alt: 'Technology Banner - Blue Abstract' 
-    },
-    { 
-      image: 'https://kimi-web-img.moonshot.cn/img/img.freepik.com/93ea73c2e2e8c5fbf676a9650d301dacb47ee9e8.jpg', 
-      alt: 'Futuristic Digital Technology' 
-    },
-    { 
-      image: 'https://kimi-web-img.moonshot.cn/img/img.freepik.com/73d4cd34d17165ac160565ca940442fa7ca5df8e.jpg', 
-      alt: 'Corporate Business Banner' 
-    }
-  ];
-
+slides = [
+  { 
+    image: 'https://images.unsplash.com/photo-1578916171728-46686eac8d58?auto=format&fit=crop&w=1200&q=80', 
+    alt: 'Bilal Store - Quality Household Products' 
+  },
+  { 
+    image: 'https://images.unsplash.com/photo-1550989460-0adf9ea622e2?auto=format&fit=crop&w=1200&q=80', 
+    alt: 'Bilal Store - Bakery and Fresh Items' 
+  },
+  { 
+    image: 'https://images.unsplash.com/photo-1628102422617-3c520291717a?auto=format&fit=crop&w=1200&q=80', 
+    alt: 'Bilal Store - Snacks and Beverages' 
+  }
+];
   currentSlide = 0;
   private interval: any;
 

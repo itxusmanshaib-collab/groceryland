@@ -23,7 +23,7 @@ export class Customer {
 
     formData.append('Customer', JSON.stringify(customerData));
 
-    this.http.post('https://sale-point.pk/api/customer/save', formData).subscribe({
+    this.http.post('http://pos.bilalstore.net//api/customer/save', formData).subscribe({
       next: (res) => {
         console.log('Customer saved successfully', res);
         alert('Customer saved successfully!');

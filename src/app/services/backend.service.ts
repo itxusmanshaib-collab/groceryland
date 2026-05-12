@@ -7,7 +7,7 @@ import { shareReplay } from 'rxjs/operators';
 export class BackendService {
   private http = inject(HttpClient);
   // baseUrl:string = 'https://groceryland.pk';
-  baseUrl:string = 'https://sale-point.pk';
+  baseUrl:string = 'http://pos.bilalstore.net';
 
 
   private cache = new Map<string, Observable<any>>();
