@@ -44,6 +44,11 @@
           (click)="setHeaderRoute('/home')">Home</a>
       </li>
       <li class="relative w-32">
+        <a class="px-4 py-2 block text-center text-gray-600 tracking-wide" routerLink="/home" routerLinkActive="active-link"
+          [routerLinkActiveOptions]="{ exact: true }"
+          (click)="setHeaderRoute('/home')">Home</a>
+      </li>
+      <li class="relative w-32">
         <a class="px-4 py-2 block text-center text-gray-600 tracking-wide" routerLink="/categories"
           routerLinkActive="active-link"
           (click)="setHeaderRoute('/categories')">Categories</a>
