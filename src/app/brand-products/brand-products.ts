@@ -25,7 +25,7 @@ export class BrandProducts implements OnInit {
   private cartService = inject(CartService);
 
   // readonly imageBaseUrl = 'https://sale-point.pk/Content/ProductImages/';
-  readonly imageBaseUrl = 'https://sale-point.pk/Content/ProductImages/';
+  readonly imageBaseUrl = 'http://pos.bilalstore.net/Content/ProductImages/';
 
 
   brandName = signal<string>('');

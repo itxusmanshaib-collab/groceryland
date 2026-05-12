@@ -18,7 +18,7 @@ export class Categories implements OnInit {
   private router = inject(Router);
   private destroyRef = inject(DestroyRef);
 
-  readonly IMAGE_BASE_PATH = 'https://sale-point.pk/content/images/categories/';
+  readonly IMAGE_BASE_PATH = 'http://pos.bilalstore.net/content/images/categories/';
 
   allCategories = signal<any[]>([]);
   categories = signal<any[]>([]);
